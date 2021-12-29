@@ -24,3 +24,6 @@
 /WebServiceApp/dist/
 /WebServiceApp/build/
 /ServiceClientApp/nbproject/private/
+/SampleRestApp/nbproject/private/
+/SampleRestApp/build/
+/SampleRestApp/dist/
