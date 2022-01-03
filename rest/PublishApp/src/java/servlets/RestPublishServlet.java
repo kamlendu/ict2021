@@ -82,7 +82,7 @@ public class RestPublishServlet extends HttpServlet {
           
         // pbl.addSubscriptionsToCustomer(ids, "27");
             
-           pbl.removeSubscriptionsToCustomer(ids, "27");
+          // pbl.removeSubscriptionsToCustomer(ids, "27");
             
             
             res = pbl.getAllCustomers(Response.class);

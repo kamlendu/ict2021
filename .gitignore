@@ -27,3 +27,19 @@
 /SampleRestApp/nbproject/private/
 /SampleRestApp/build/
 /SampleRestApp/dist/
+/rest-filter-security/PublishApp/build/
+/rest-filter-security/PublishApp/dist/
+/rest-filter-security/PublishApp/nbproject/private/
+/rest-httpauthentication-security (copy)/PublishApp/build/
+/rest-httpauthentication-security (copy)/PublishApp/dist/
+/rest-httpauthentication-security (copy)/PublishApp/nbproject/private/
+/rest-jwt-security (copy)/PublishApp/build/
+/rest-jwt-security (copy)/PublishApp/dist/
+/rest-jwt-security (copy)/PublishApp/nbproject/private/
+/rest-jwt-security/PublishApp/build/
+/rest-jwt-security/PublishApp/dist/
+/rest-jwt-security/PublishApp/nbproject/private/
+/HashApp/nbproject/private/
+/SecureWebApp/nbproject/private/
+/SecureWebApp/dist/
+/SecureWebApp/build/
