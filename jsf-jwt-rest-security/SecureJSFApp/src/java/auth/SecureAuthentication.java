@@ -69,7 +69,7 @@ AuthenticationStatus status;
               KeepRecord.setPrincipal(result.getCallerPrincipal());
               KeepRecord.setRoles(result.getCallerGroups());
         
-              
+              lbean.setUsername(username);
               lbean.setStatus(status);
               lbean.setRoles(result.getCallerGroups());
               return status;
@@ -100,11 +100,12 @@ AuthenticationStatus status;
             // validation of the jwt credential
 
             return validateToken(token, ctx);
-        } else if (ctx.isProtected()) {
-            // A protected resource is a resource for which a constraint has been defined.
-            // if there are no credentials and the resource is protected, we response with unauthorized status
-            return ctx.responseUnauthorized();
         }
+//     else if (ctx.isProtected()) {
+//            // A protected resource is a resource for which a constraint has been defined.
+//            // if there are no credentials and the resource is protected, we response with unauthorized status
+//            return ctx.responseUnauthorized();
+//        }
       return ctx.doNothing();
     }
     

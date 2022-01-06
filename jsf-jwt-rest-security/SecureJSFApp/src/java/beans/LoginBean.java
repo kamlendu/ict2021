@@ -90,11 +90,7 @@ public class LoginBean {
       
      AuthenticationStatus mystatus=   ctx.authenticate(request, response, withParams().credential(credential));
 
-     if(mystatus.equals(SEND_FAILURE))
-     {
-          errorstatus= "User Name or Password may be wrong";
-          return "Login";
-     }
+    
        if (mystatus.equals(SEND_CONTINUE)) {
             // Authentication mechanism has send a redirect, should not
             // send anything to response from JSF now. The control will now go into HttpAuthenticationMechanism
@@ -109,11 +105,11 @@ public class LoginBean {
             return "/user/User";
        
         }
-//     else
-//     {
-//          errorstatus= "User Name or Password may be wrong";
-//          return "/admin/Admin";
-//     }
+     else
+     {
+          errorstatus= "User Name or Password may be wrong";
+          return "Login";
+     }
        
         }
         catch(Exception e)
