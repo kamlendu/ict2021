@@ -89,3 +89,6 @@
 /JSF-REST-JWT-HTTP-SECURITY/SecureJSFApp/build/
 /JSF-REST-JWT-HTTP-SECURITY/SecureJSFApp/dist/
 /JSF-REST-JWT-HTTP-SECURITY/SecureJSFApp/nbproject/private/
+/JSFSecureApp/build/
+/JSFSecureApp/dist/
+/JSFSecureApp/nbproject/private/
