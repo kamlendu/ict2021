@@ -30,7 +30,7 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(client.MyRestFilter.class);
-        resources.add(rest.PublishResource.class);
+        resources.add(rest.SecureResource.class);
     }
     
 }

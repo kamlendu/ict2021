@@ -22,9 +22,9 @@ import javax.ws.rs.core.MediaType;
  *
  * @author root
  */
-@DeclareRoles("Admin")
+@DeclareRoles({"Admin", "Supervisor"})
 @Path("secure")
-//@RequestScoped
+@RequestScoped
 public class SecureResource {
 @EJB SecureBean sb;
     @Context
@@ -40,7 +40,7 @@ public class SecureResource {
      * Retrieves representation of an instance of rest.SecureResource
      * @return an instance of java.lang.String
      */
-    @RolesAllowed({"Admin","Supervisor"})
+    @RolesAllowed("Admin")
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String sayHello() {

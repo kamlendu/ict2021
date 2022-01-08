@@ -6,12 +6,13 @@
 package beans;
 
 import java.util.Set;
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.security.enterprise.AuthenticationStatus;
 import static javax.security.enterprise.AuthenticationStatus.SEND_CONTINUE;
+import static javax.security.enterprise.AuthenticationStatus.SEND_FAILURE;
 import static javax.security.enterprise.AuthenticationStatus.SUCCESS;
 import javax.security.enterprise.SecurityContext;
 import static javax.security.enterprise.authentication.mechanism.http.AuthenticationParameters.withParams;
@@ -20,7 +21,6 @@ import javax.security.enterprise.credential.Password;
 import javax.security.enterprise.credential.UsernamePasswordCredential;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import record.KeepRecord;
 
 
 /**
@@ -37,15 +37,6 @@ public class LoginBean {
     private Set<String> roles;
     private String errorstatus;
     private AuthenticationStatus status;
-    private String lout;
-
-    public String getLout() {
-        return lout;
-    }
-
-    public void setLout(String Lout) {
-        this.lout = Lout;
-    }
 
    
 
@@ -93,13 +84,13 @@ public class LoginBean {
     {
         try{
         FacesContext context = FacesContext.getCurrentInstance();
-        
         Credential credential = new UsernamePasswordCredential(username, new Password(password));
          HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
         HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
       
-    AuthenticationStatus     mystatus=   ctx.authenticate(request, response, withParams().credential(credential));
-     //AuthenticationStatus     mystatus= AuthenticationStatus.SUCCESS;
+     AuthenticationStatus mystatus=   ctx.authenticate(request, response, withParams().credential(credential));
+
+    
        if (mystatus.equals(SEND_CONTINUE)) {
             // Authentication mechanism has send a redirect, should not
             // send anything to response from JSF now. The control will now go into HttpAuthenticationMechanism
@@ -116,8 +107,8 @@ public class LoginBean {
         }
      else
      {
-   
-          return "/Login";
+          errorstatus= "User Name or Password may be wrong";
+          return "Login";
      }
        
         }
@@ -126,7 +117,7 @@ public class LoginBean {
              errorstatus= "User Name or Password may be wrong";
             e.printStackTrace();
         }
-        return "/Login";
+        return "Login";
     }
     /**
      * Creates a new instance of LoginBean
@@ -136,5 +127,17 @@ public class LoginBean {
        // errorstatus="";
     }
     
-  
+    public String logout()
+    {
+        try{
+       HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+       request.logout();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return "/Login.jsf";
+    }
+    
 }

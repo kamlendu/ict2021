@@ -10,9 +10,8 @@
         <br/>
         <h2> ${helloBean.secureHello} </h2>
         <h2> <h:outputText id="tx" style="color:red" value="#{helloBean.message}"/> </h2>
-        <h:form>
-        <h:commandLink id="lout" value="Log Out" action="#{loginBean.logout()}"/>
-        </h:form>
+        <h:link style="color:red" id="link" value="Logout" outcome="/Login?logout=yes"/>
+     
     </h:body>
 </html>
 

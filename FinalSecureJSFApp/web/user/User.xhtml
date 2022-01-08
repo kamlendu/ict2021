@@ -6,8 +6,13 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <h:link style="color:red" id="link" value="Login" outcome="/Login"/>
-      <br/>  Hello from Facelets
+       <h2>  Hello from Supervisors !!!</h2>
+        <br/>
+        <h2> ${helloBean.secureHello} </h2>
+        <h2> <h:outputText id="tx" style="color:red" value="#{helloBean.message}"/> </h2>
+        <h:form>
+        <h:commandLink id="lout" value="Log Out" action="#{loginBean.logout()}"/>
+        </h:form>
     </h:body>
 </html>
 

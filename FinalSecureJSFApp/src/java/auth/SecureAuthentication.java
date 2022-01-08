@@ -46,21 +46,9 @@ AuthenticationStatus status;
     @Override
     public AuthenticationStatus validateRequest(HttpServletRequest request, HttpServletResponse response, HttpMessageContext ctx) throws AuthenticationException {
       //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-   System.out.println("uri="+request.getRequestURI()+" "+request.getParameter("logout"));
+   String token = extractToken(ctx);
       try{
-   if(request.getParameter("logout").equals("yes"))
-      {
-          request.logout();
-           return ctx.doNothing();
-      }
-      }
-      catch(Exception e)
-      {
-          e.printStackTrace();
-      }
-      String token = extractToken(ctx);
-      try{
-      
+        
         
       if(token==null && lbean.getUsername()!=null )
       {
@@ -71,7 +59,6 @@ AuthenticationStatus status;
           String password = lbean.getPassword();
           Credential credential = new UsernamePasswordCredential(username, new Password(password));
           result = handler.validate(credential);
-         
           if(result.getStatus()== Status.VALID)
           {
               AuthenticationStatus status = createToken(result, ctx);
@@ -88,22 +75,18 @@ AuthenticationStatus status;
               return status;
         
         }
-     
           else
           {
               lbean.setErrorStatus("User or Password is not correct !");
               lbean.setStatus(AuthenticationStatus.SEND_FAILURE);
-              return status;
              // request.getServletContext().getRequestDispatcher("/Login.jsf").forward(request, response);
           }
       }
-      
      if(KeepRecord.getToken()!=null)
      {
           Credential credential1 = new UsernamePasswordCredential(KeepRecord.getUsername(), new Password(KeepRecord.getPassword()));
           result = handler.validate(credential1);
           AuthenticationStatus status = createToken(result, ctx);
-          
           ctx.notifyContainerAboutLogin(KeepRecord.getPrincipal(), KeepRecord.getRoles());
      }
       
@@ -113,12 +96,12 @@ AuthenticationStatus status;
         e.printStackTrace();
     }
       
-     if (token != null) {
+     if (KeepRecord.getToken() != null) {
             // validation of the jwt credential
 
             return validateToken(token, ctx);
         }
-     else if (ctx.isProtected() ) {
+     else if (ctx.isProtected()) {
             // A protected resource is a resource for which a constraint has been defined.
             // if there are no credentials and the resource is protected, we response with unauthorized status
             return ctx.responseUnauthorized();
@@ -176,7 +159,6 @@ AuthenticationStatus status;
         String authorizationHeader = context.getRequest().getHeader(AUTHORIZATION_HEADER);
         if (authorizationHeader != null && authorizationHeader.startsWith(BEARER)) {
             String token = authorizationHeader.substring(BEARER.length(), authorizationHeader.length());
-            KeepRecord.setToken(token);
           //  System.out.println("JWTAuthenticationMechanism - Extract Tokens");
             return token;
         }

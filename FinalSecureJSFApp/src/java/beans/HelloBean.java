@@ -8,10 +8,6 @@ package beans;
 import client.SecureClient;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import record.KeepRecord;
 
 /**
  *
@@ -57,5 +53,5 @@ public class HelloBean {
     public void setSecureHello(String secureHello) {
         this.secureHello = secureHello;
     }
-  
+    
 }

@@ -10,6 +10,8 @@ import entity.Address;
 import entity.Customer;
 import entity.Subscription;
 import java.util.Collection;
+import javax.annotation.security.DeclareRoles;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -29,6 +31,8 @@ import javax.ws.rs.core.MediaType;
  * @author root
  */
 @Path("publish")
+@DeclareRoles({"Admin","Supervisor"})
+@RolesAllowed("Admin")
 public class PublishResource {
     
     @EJB PublishBeanLocal pbl;
@@ -42,7 +46,7 @@ public class PublishResource {
     public PublishResource() {
     }
 
-  
+  //@RolesAllowed("Supervisor")
     @POST
     @Path("addcust/{fname}/{lname}")
     public void addCustomer(@PathParam("fname") String firstName, @PathParam("lname") String lastName) {
