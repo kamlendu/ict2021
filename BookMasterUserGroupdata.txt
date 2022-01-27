@@ -1,0 +1,59 @@
+CREATE TABLE `BookMaster` (
+  `BookName` varchar(50) DEFAULT NULL,
+  `AuthorName` varchar(50) DEFAULT NULL,
+  `PublisherName` varchar(50) DEFAULT NULL,
+  `Synopsis` varchar(100) DEFAULT NULL,
+  `BookID` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`BookID`)
+) ENGINE=MyISAM AUTO_INCREMENT=366 DEFAULT CHARSET=latin1;
+
+mysql> select * from BookMaster;
++------------------------+--------------------+-------------------+------------------------------+--------+
+| BookName               | AuthorName         | PublisherName     | Synopsis                     | BookID |
++------------------------+--------------------+-------------------+------------------------------+--------+
+| Way to Success         | Smith Williams     | RSP               | A motivational book          |    323 |
+| Five Point Someone     | Chetan Bhagat      | Rupa and Company  | Three Idiots                 |    293 |
+| The Scion of Ichhwaku  | Amit Tripathi      | TMH               | A mythological Saga          |    330 |
+| Himalayan Intern       | Shri M.            | Roopa Publication | A book on Spiritual Sciences |    343 |
+| AI and Future of World | Dr. Rajiv Malhotra | TMH               | A book on AI                 |    358 |
+| Savarkar               | Vikram Sampat      | Pi publishing     | A history book               |    363 |
++------------------------+--------------------+-------------------+------------------------------+--------+
+
+====  User and group data ======================
+
+
+mysql> desc users;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| username | varchar(50)  | NO   | PRI | NULL    |       |
+| password | varchar(500) | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from users;
++----------+---------------------------------------------------------------------------------------------------------------------+
+| username | password                                                                                                            |
++----------+---------------------------------------------------------------------------------------------------------------------+
+| admin    | PBKDF2WithHmacSHA256:2048:rNTLpTUJfLVutQk+NG1B2Li5GFZ2kgIvtogIci3EZCY=:4JNhMVKH4Im5UHCKc23EEUUIzpQ9sIBQmmlo/sn2VP0= |
+| user     | PBKDF2WithHmacSHA256:2048:ooL0ULgBf6Fq0YurXBIKMjWWrqOukulRBqAXzFjExys=:Gh8g16d69tWZVltJVRc17GweywmXVr1+eTl7FyKgdxQ= |
++----------+---------------------------------------------------------------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> desc groups;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| GROUPNAME | varchar(100) | YES  |     | NULL    |       |
+| username  | varchar(50)  | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from groups;
++------------+----------+
+| GROUPNAME  | username |
++------------+----------+
+| Admin      | admin    |
+| Supervisor | user     |
++------------+----------+
+2 rows in set (0.00 sec)
