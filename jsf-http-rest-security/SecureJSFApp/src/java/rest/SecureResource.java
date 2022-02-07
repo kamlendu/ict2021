@@ -40,7 +40,7 @@ public class SecureResource {
      * Retrieves representation of an instance of rest.SecureResource
      * @return an instance of java.lang.String
      */
-    @RolesAllowed({"Admin","Supervisor"})
+    @RolesAllowed({"Admin"})
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String sayHello() {

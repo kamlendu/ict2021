@@ -11,8 +11,11 @@
         <h2> ${helloBean.secureHello} </h2>
         <h:outputText id="tx" style="color:red" value="#{helloBean.message}"/> 
      <br/>
-        <h:link style="color:red" id="link" value="Logout" outcome="/Login?logout=yes"/>
-     
+     <form method="POST" action="/SecureJSFApp/Login.jsf">
+         <input type="hidden" name="logout" value="yes"/>
+        <!--<h:link style="color:red" id="link" value="Logout" outcome="/Login?logout=yes"/>-->
+        <input type="submit" name="submit"  style="color:red" value="Logout"/>
+     </form>
 
         
     </h:body>

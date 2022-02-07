@@ -37,18 +37,7 @@ public class LoginBean {
     private Set<String> roles;
     private String errorstatus;
     private AuthenticationStatus status;
-    private String lout;
-
-    public String getLout() {
-        return lout;
-    }
-
-    public void setLout(String Lout) {
-        this.lout = Lout;
-    }
-
-   
-
+    
     public AuthenticationStatus getStatus() {
         return status;
     }
@@ -135,6 +124,8 @@ public class LoginBean {
         
        // errorstatus="";
     }
+    
+   
     
   
 }
